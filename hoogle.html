@@ -6,15 +6,8 @@
             border: 1px solid gray;
         }
     </style>
-    <script src="search.js"></script>
-    <body>
-        <div class="container">
-            Hoogle: <input id='search' maxlength="20"/>
-            <pre id="suggestions"></pre>
-        </div>
-    </body>
-    <script>    
-        function getSuggestions(text, cb) {
+    <script>
+     function getSuggestions(text, cb) {
             var len = 20 - ('' + text).length;            
             var ret = [];
             for (var  i = 0; i < len; i++) {
@@ -26,7 +19,15 @@
         function showSuggestions(list) {
             document.querySelector('pre').innerHTML = list.join('\n');
         }
-
+    </script>
+    <script src="search.js"></script>
+    <body>
+        <div class="container">
+            Hoogle: <input id='search' maxlength="20"/>
+            <pre id="suggestions"></pre>
+        </div>
+    </body>
+    <script>    
         document.getElementById('search').addEventListener('input', startSearch);
     </script>
     </html>
