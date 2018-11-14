@@ -1,0 +1,32 @@
+<html>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid gray;
+        }
+    </style>
+    <script src="search.js"></script>
+    <body>
+        <div class="container">
+            Hoogle: <input id='search' maxlength="20"/>
+            <pre id="suggestions"></pre>
+        </div>
+    </body>
+    <script>    
+        function getSuggestions(text, cb) {
+            var len = 20 - ('' + text).length;            
+            var ret = [];
+            for (var  i = 0; i < len; i++) {
+                ret.push(text + ' ' + i);
+            }
+            setTimeout(cb, len*100, ret);
+        }
+    
+        function showSuggestions(list) {
+            document.querySelector('pre').innerHTML = list.join('\n');
+        }
+
+        document.getElementById('search').addEventListener('input', startSearch);
+    </script>
+    </html>
